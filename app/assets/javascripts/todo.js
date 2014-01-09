@@ -5,7 +5,7 @@ window.TD = {
   Routers: {},
 
   initialize: function ($rootEl, tasks) {
-    console.log("JS client code runs!");
-    console.log(tasks);
+    new TD.Routers.TasksRouter($rootEl, tasks);
+    Backbone.history.start();
   }
 };

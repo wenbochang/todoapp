@@ -1,15 +1,20 @@
 TD.Views.TasksListView = Backbone.View.extend({
-  render: function() {
-    var that = this;
+  events: {
+    "click li.task": "showTask"
+  },
 
-    var ul = $("<ul></ul>");
-    _(that.collection).each(function (task) {
-      ul.append(
-        $("<li></li>").text(task.little)
-        )
+  render: function() {
+    var view = this;
+
+    var renderedContent = JST["tasks/list"]({
+      tasks: view.collection
     });
 
-    that.$el.html(ul);
-    return that;
+    view.$el.html(renderedContent);
+    return view;
+  },
+
+  showTask: function(event) {
+    console.log( $(event.currentTarget).attr("data-id") );
   }
 });
